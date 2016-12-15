@@ -1,21 +1,26 @@
 (function(angular) {
     var app = angular.module('app', ['ui.router']);
 
-    routerConfig.$inject = ['$stateProvider'];
+    routerConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-    function routerConfig($stateProvider) {
+    function routerConfig($stateProvider, $urlRouterProvider) {
         var searchState = {
             name: 'search',
             url: '/',
-            templateUrl: './Views/search.html'
-        }
+            templateUrl: '/views/search.html',
+            controller: 'SearchController',
+            controllerAs: 'vm'
+        };
 
         var resultState = {
             name: 'result',
-            url: '/result',
-            templateUrl: './Views/result.html'
-        }
+            url: '/result/{origin}/{originType}/{destination}/{destinationType}/{currency}',
+            templateUrl: '/Views/result.html',
+            controller: 'ResultController',
+            controllerAs: 'vm'
+        };
 
+        $urlRouterProvider.otherwise('/');
         $stateProvider.state(searchState);
         $stateProvider.state(resultState);
     }

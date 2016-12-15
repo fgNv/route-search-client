@@ -1,0 +1,40 @@
+<h2>Resultado de rotas</h2>
+
+<div data-ng-repeat="route in vm.data.routes" style="margin-bottom: 20px;">
+    <h3>{{route.name}}:</h3>
+    
+    <div>
+        <b>Distância:</b> {{route.distance}} km
+    </div>
+    <div>
+        <b>Duração:</b> {{route.duration}} minutos
+    </div>
+    <div>
+        <b>Preço indicado:</b> 
+        {{route.indicativePrice.currency}} {{route.indicativePrice.price}}
+    </div>
+    <div style="margin-bottom: 15px; padding-left: 25px;">
+        <h4>Segmentos:</h4>
+
+        <div data-ng-repeat="segment in route.segments" style="margin-bottom: 10px;">
+            <div>
+                <b>Tipo:</b> {{segment.kind}}
+            </div>
+            <div data-ng-show="segment.sCode">
+                <b>Origem:</b> {{segment.sCode}}
+            </div>            
+            <div data-ng-show="segment.tCode">
+                <b>Destino:</b> {{segment.tCode}}
+            </div>
+            <div data-ng-show="segment.sName">
+                <b>Origem:</b> {{segment.sName}}
+            </div>
+            <div data-ng-show="segment.tName">
+                <b>Destino:</b> {{segment.tName}}
+            </div>
+            <div>
+                <b>Preço indicado:</b> {{segment.indicativePrice.currency}} {{segment.indicativePrice.price}}
+            </div>
+        </div>
+    </div>
+</div>

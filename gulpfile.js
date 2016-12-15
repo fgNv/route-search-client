@@ -6,9 +6,20 @@ var gulp = require('gulp'),
 
 var jsVendorPaths = [
     './node_modules/angular/angular.js',
+    './node_modules/jquery/dist/jquery.js',
     './node_modules/angular-ui-router/release/angular-ui-router.js',
     './node_modules/bootstrap/dist/js/bootstrap.js',
 ];
+
+gulp.task('watch-src', function () {     
+    gulp.watch('App/**/*', ['copy-src']);
+    gulp.watch('Views/**/*', ['copy-src']);
+});
+
+gulp.task('copy-src', function() {
+   gulp.src('./App/**/*').pipe(gulp.dest('./public/app'));
+   gulp.src('./Views/**/*').pipe(gulp.dest('./public/views'));
+});
 
 gulp.task('copy-bootstrap', function() {
    gulp.src('./node_modules/bootstrap/dist/**/*')
@@ -26,5 +37,5 @@ gulp.task('js-vendors', function(){
         .pipe(gulp.dest('./public/dist'));
 });
 
-gulp.task('default', ['js-vendors', 'copy-bootstrap'], function(){});
+gulp.task('default', ['js-vendors', 'copy-bootstrap', 'copy-src'], function(){});
 

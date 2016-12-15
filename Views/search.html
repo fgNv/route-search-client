@@ -1,19 +1,41 @@
-<form>
+<h2>Busca de rotas</h2>
+
+<form ng-submit="vm.submit()" name="SearchForm">
   <div class="form-group">
     <label for="origem">Origem</label>
-    <input type="text" class="form-control" id="origem">
+    <input type="text" class="form-control" id="origem"
+           required="required"
+           data-ng-model="vm.request.origin">
   </div>
   <div class="form-group">
     <label for="tipoOrigem">Tipo Origem</label>
-    <input type="text" class="form-control" id="tipoOrigem">
+    <select class="form-control" id="tipoOrigem"
+            data-ng-model="vm.request.originType"
+            required="required"
+            data-ng-options="type for type in vm.targetTypeOptions">
+    </select>
   </div>
   <div class="form-group">
     <label for="destino">Destino</label>
-    <input type="text" class="form-control" id="destino">
+    <input type="text" class="form-control" id="destino"
+           required="required"
+           data-ng-model="vm.request.destination" >
   </div>
   <div class="form-group">
     <label for="tipoDestino">Tipo Destino</label>
-    <input type="text" class="form-control" id="tipoDestino">
+    <select type="text" class="form-control" id="tipoDestino"
+            data-ng-model="vm.request.destinationType"
+            required="required"
+            data-ng-options="type for type in vm.targetTypeOptions" >
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="currency">Moeda</label>
+    <select type="text" class="form-control" id="currency"
+            data-ng-model="vm.request.currency"
+            required="required"
+            data-ng-options="type for type in vm.currencyOptions" >
+    </select>
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
