@@ -7,7 +7,10 @@
     function searchController($state) {
         var vm = this;
 
-        vm.targetTypeOptions = ['city', 'airport'];
+        vm.targetTypeOptions =  [
+            {'label': 'Cidade', 'value': 'city'}, 
+            {'label': 'Aeroporto', 'value': 'airport'}
+        ];
 
         vm.currencyOptions = ['BRL', 'USD']; 
 
